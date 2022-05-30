@@ -1,16 +1,31 @@
-
+import streamlit as st
+import pandas as pd
+from app_eda import run_eda
+from app_home import run_home
 
 
 def main() :
-    pass
+    st.title('인천광역시 5대 범죄 신고율')
+
+    menu = ['Home', 'EDA']
+    choice = st.sidebar.selectbox('메뉴 선택', menu)
 
 
- if choice == meun[0] :
-     pass
-elif choice == menu[1] :
-    pass
-elif choice == menu[2] :
-    pass
+
+
+
+
+
+    if choice == menu[0] :
+        run_home()
+    elif choice == menu[1] :
+        run_eda()
+
+
+
+
+
+
 
 
 if __name__ == '__main__' :
