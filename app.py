@@ -5,8 +5,7 @@ from app_home import run_home
 
 
 def main() :
-    st.title('인천광역시 5대 범죄 신고율')
-
+    
     menu = ['Home', 'EDA']
     choice = st.sidebar.selectbox('메뉴 선택', menu)
 
