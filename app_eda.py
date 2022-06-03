@@ -9,7 +9,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
-
+from geopy.geocoders import Nominatim
+import geopy.distance
 
 
 # 한글 깨짐 현상시 사용하는 코드
@@ -31,7 +32,7 @@ else:
 
 
 def run_eda() :
-    st.subheader('인천광역시 5대 범죄 신고 건수 데이터')
+    st.title('인천광역시 범죄 신고 건수 데이터')
     st.info('중구,동구,옹진은 중부서에 포함되어있습니다.')
 
     df_crime_pop = pd.read_csv('data/df_crime_pop.csv')
@@ -42,6 +43,7 @@ def run_eda() :
 
 
     # 차트1 : 인구 천명당 범죄 신고 비율
+    st.subheader('인구 대비 범죄 신고 건수')
     st.info('인구수 대비 범죄 신고 건수로 작성된 차트입니다.')
 
     group_crime_pop = pd.read_csv('data/group_crime_pop.csv')
@@ -78,11 +80,43 @@ def run_eda() :
 
 
     # 관서별 인구수 및 범죄 신고건수
-    st.info('음')
-    st.selectbox('관할서 선택',df_crime_pop['관서명'])
+    st.subheader('연관성 확인')
+    st.info('연관성을 확인하고 싶은 항목을 선택해주세요.')
+    
+    df_crime_pop.drop(['관서명','구별'], axis=1).columns.to_list()
+    multi1 = st.multiselect('항목 선택', df_crime_pop.drop(['관서명','구별'], axis=1).columns.to_list())
 
-    if st.button('차트 확인') :
-      st.dataframe(df_crime_pop)  # 이 부분 히스토그램으로 바꿔줘야..!!
+    if st.button('연관성 확인') :
+
+        #fig2 = plt.figure() // 이 방법으로 안될 때가 있어서 아래 코드로!!
+        fig2 = sns.pairplot(data=df_crime_pop, vars=df_crime_pop[multi1])
+
+        st.pyplot(fig2)
+
+
+######### geo_local = Nominatim(user_agent='South Korea')
+
+        # 위도, 경도 반환하는 함수
+        def geocoding(address):
+            geo = geo_local.geocode(address)
+            x_y = [geo.latitude, geo.longitude]
+            return x_y
+        
+        with st.expander("장소 간 거리를 모를 때는 이 곳을 눌러주십시요."):
+            address1 = st.text_input('첫번째 주소 입력:(예시 : oo시 oo구 oo로oo번길 oo)')
+            address2 = st.text_input('두번째 주소 입력:(예시 : oo시 oo구 oo로oo번길 oo)')
+            b1 = st.button('입력하기',key="1")
+            if b1 :
+                lat_01 = geocoding(address1)[0]
+                lng_01 = geocoding(address1)[1]
+                st.text('첫번째 장소의 위도 : {}, 경도 : {}'.format(lat_01,lng_01))
+            
+                lat_02 = geocoding(address2)[0]
+                lng_02 = geocoding(address2)[1]
+                st.text('두번째 장소의 위도 : {}, 경도 : {}'.format(lat_02,lng_02))
+                    
+                map_data = pd.DataFrame({'latitude':[lat_01, lat_02],'longitude':[lng_01, lng_02]})
+                st.map(data= map_data, zoom = 9)
 
 
 
@@ -92,25 +126,13 @@ def run_eda() :
 
 
 
-    # select_office = st.selectbox('관할서 선택',df_crime_pop['구별'])
-    # print(select_office)
+
+
+
+
 
     # if st.button('차트 확인') :
-
-    #     ratio_office = df_crime_pop[select_office]
-    #     labels = df_crime_pop['강간','강도','살인','절도','폭력']
-    #     colors = ['#9579D1', '#BE9DDF', '#FFA5D8', '#92DDEA', '#7EB8DA','#FFCBCB', '#7BCABF', '#586FAB', '#93B3B7', '#FF9797']
-    #     wedgeprops={'width': 0.8, 'edgecolor': 'w', 'linewidth': 3}
-
-    #     fig1 = plt.figure() 
-    #     plt.pie(ratio_office, labels=labels, labeldistance=1.2, autopct='%.0f%%', startangle=90, 
-    #             counterclock=False, colors=colors, wedgeprops=wedgeprops)
-    #     plt.legend(loc=(-1,0.2))
-    #     plt.title(select_office, size=14)
-
-    #     st.pyplot(fig1)
+    #   st.dataframe(df_crime_pop)  # 이 부분 히스토그램으로 바꿔줘야..!!
 
 
-        
 
-        
