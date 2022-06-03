@@ -9,8 +9,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
-from geopy.geocoders import Nominatim
-import geopy.distance
 
 
 # 한글 깨짐 현상시 사용하는 코드
@@ -92,32 +90,6 @@ def run_eda() :
         fig2 = sns.pairplot(data=df_crime_pop, vars=df_crime_pop[multi1])
 
         st.pyplot(fig2)
-
-
-######### geo_local = Nominatim(user_agent='South Korea')
-
-        # 위도, 경도 반환하는 함수
-        def geocoding(address):
-            geo = geo_local.geocode(address)
-            x_y = [geo.latitude, geo.longitude]
-            return x_y
-        
-        with st.expander("장소 간 거리를 모를 때는 이 곳을 눌러주십시요."):
-            address1 = st.text_input('첫번째 주소 입력:(예시 : oo시 oo구 oo로oo번길 oo)')
-            address2 = st.text_input('두번째 주소 입력:(예시 : oo시 oo구 oo로oo번길 oo)')
-            b1 = st.button('입력하기',key="1")
-            if b1 :
-                lat_01 = geocoding(address1)[0]
-                lng_01 = geocoding(address1)[1]
-                st.text('첫번째 장소의 위도 : {}, 경도 : {}'.format(lat_01,lng_01))
-            
-                lat_02 = geocoding(address2)[0]
-                lng_02 = geocoding(address2)[1]
-                st.text('두번째 장소의 위도 : {}, 경도 : {}'.format(lat_02,lng_02))
-                    
-                map_data = pd.DataFrame({'latitude':[lat_01, lat_02],'longitude':[lng_01, lng_02]})
-                st.map(data= map_data, zoom = 9)
-
 
 
 
