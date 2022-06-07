@@ -48,7 +48,7 @@ def run_eda() :
     st.info('인구수 대비 범죄 신고 건수로 작성된 차트입니다.')
 
     with st.expander('한글이 깨질 때 누르기') :
-        img2 = Image.open('data/chart.PNG')
+        img2 = Image.open('data/chart.png')
         st.image(img2)
 
     group_crime_pop = pd.read_csv('data/group_crime_pop.csv')
