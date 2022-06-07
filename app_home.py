@@ -12,11 +12,12 @@ from PIL import Image
 
 
 def run_home() :  
-    st.title('인천광역시 5대 범죄 데이터')
+    st.title('인천경찰청 위치 및 범죄 데이터')
     img = Image.open('data/police_st.PNG')
     st.image(img)
    
-
+    st.subheader('인천광역시 관할 경찰서 위치')
+    st.info('우리 동네 경찰서 위치를 확인해보세요.')
 
     #지도
     police_loc = pd.read_csv('data/police_loc.csv')
@@ -37,13 +38,12 @@ def run_home() :
                             icon=g.Icon('blue', icon='star')) 
         marker01.add_to(m)
 
-    st_data = st_folium(m, widht = 725)
-
-
+    st_data = st_folium(m, width=800)
 
 
 
     st.subheader('위급상황을 위해 반드시 기억해야할 112 신고요령')
+    st.info('신고 요령을 터득하여 보다 신속하게 도움을 받아보세요.')
     video_file = open('data/emergency_112.mp4', 'rb')
     st.video(video_file)
 
