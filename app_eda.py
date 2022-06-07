@@ -16,39 +16,19 @@ from PIL import Image
 # 한글 깨짐 현상시 사용하는 코드
 import platform
 
-
-#
-import matplotlib
 from matplotlib import font_manager, rc
-import platform
+plt.rc('font', family='AppleGothic')
+plt.rcParams['axes.unicode_minus'] = False
 
-if platform.system() == 'Windows':
-# 윈도우인 경우
-    font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
-    rc('font', family=font_name)
-else:    
-# Mac 인 경우
+if platform.system() == 'Darwin':
     rc('font', family='AppleGothic')
-    
-matplotlib.rcParams['axes.unicode_minus'] = False   
-#그래프에서 마이너스 기호가 표시되도록 하는 설정입니다. 
+elif platform.system() == 'Windows':
+    path = "c:/Windows/Fonts/malgun.ttf"
+    font_name = font_manager.FontProperties(fname=path).get_name()
+    rc('font', family=font_name)
+else:
+    print('Unknown system... sorry~~~~')
 
-
-
-
-
-# from matplotlib import font_manager, rc
-# plt.rcParams['UFT-8'] = False
-
-# if platform.system() == 'Darwin':
-#     rc('font', family='AppleGothic')
-# elif platform.system() == 'Windows':
-#     path = "c:/Windows/Fonts/malgun.ttf"
-#     font_name = font_manager.FontProperties(fname=path).get_name()
-#     rc('font', family=font_name)
-# else:
-#     print('Unknown system... sorry~~~~')
-# #
 
 
 
