@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
 
+from PIL import Image 
+
 
 # 한글 깨짐 현상시 사용하는 코드
 import platform
@@ -17,17 +19,16 @@ import platform
 
 from matplotlib import font_manager, rc
 plt.rcParams['axes.unicode_minus'] = False
-plt.rcParams['font.family'] = 'AppleGothic'
 
-# if platform.system() == 'Darwin':
-#     rc('font', family='AppleGothic')
-# elif platform.system() == 'Windows':
-#     path = "c:/Windows/Fonts/malgun.ttf"
-#     font_name = font_manager.FontProperties(fname=path).get_name()
-#     rc('font', family=font_name)
-# else:
-#     print('Unknown system... sorry~~~~')
-# #
+if platform.system() == 'Darwin':
+    rc('font', family='AppleGothic')
+elif platform.system() == 'Windows':
+    path = "c:/Windows/Fonts/malgun.ttf"
+    font_name = font_manager.FontProperties(fname=path).get_name()
+    rc('font', family=font_name)
+else:
+    print('Unknown system... sorry~~~~')
+#
 
 
 
@@ -45,6 +46,10 @@ def run_eda() :
     # 차트1 : 인구 천명당 범죄 신고 비율
     st.subheader('인구 대비 범죄 신고 건수')
     st.info('인구수 대비 범죄 신고 건수로 작성된 차트입니다.')
+
+    with st.expander('한글이 깨질 때 누르기') :
+        img2 = Image.open('data/chart.PNG')
+        st.image(img2)
 
     group_crime_pop = pd.read_csv('data/group_crime_pop.csv')
 
