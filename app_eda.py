@@ -23,7 +23,7 @@ plt.rcParams['axes.unicode_minus'] = False
 if platform.system() == 'Darwin':
     rc('font', family='AppleGothic')
 elif platform.system() == 'Windows':
-    path = "c:/Windows/Fonts/NanumGothic.ttf"          #malgun
+    path = "c:/Windows/Fonts/malgun.ttf"
     font_name = font_manager.FontProperties(fname=path).get_name()
     rc('font', family=font_name)
 else:
@@ -47,9 +47,8 @@ def run_eda() :
     st.subheader('인구 대비 범죄 신고 건수')
     st.info('인구수 대비 범죄 신고 건수로 작성된 차트입니다.')
 
-    with st.expander('인구 1,000명 당 범죄 신고 건수 비율 차트') :
-        img2 = Image.open('data/chart.png')
-        st.image(img2)
+    img2 = Image.open('data/chart.png')
+    st.image(img2)
 
     group_crime_pop = pd.read_csv('data/group_crime_pop.csv')
 
