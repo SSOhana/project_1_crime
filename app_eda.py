@@ -23,7 +23,7 @@ plt.rcParams['axes.unicode_minus'] = False
 if platform.system() == 'Darwin':
     rc('font', family='AppleGothic')
 elif platform.system() == 'Windows':
-    path = "c:/Windows/Fonts/malgun.ttf"
+    path = "c:/Windows/Fonts/NanumGothic.ttf"          #malgun
     font_name = font_manager.FontProperties(fname=path).get_name()
     rc('font', family=font_name)
 else:
@@ -47,7 +47,7 @@ def run_eda() :
     st.subheader('인구 대비 범죄 신고 건수')
     st.info('인구수 대비 범죄 신고 건수로 작성된 차트입니다.')
 
-    with st.expander('한글이 깨질 때 누르기') :
+    with st.expander('인구 1,000명 당 범죄 신고 건수 비율 차트') :
         img2 = Image.open('data/chart.png')
         st.image(img2)
 
@@ -69,18 +69,20 @@ def run_eda() :
     colors = ['#9579D1', '#BE9DDF', '#FFA5D8', '#92DDEA', '#7EB8DA','#FFCBCB', '#7BCABF', '#FF9797']
     wedgeprops={'width': 0.8, 'edgecolor': 'w', 'linewidth': 3}
 
-    fig1 = plt.figure() 
-    plt.pie(ratio, labels=labels, labeldistance=1.2, autopct='%.0f%%', startangle=90, 
-            counterclock=False, colors=colors, wedgeprops=wedgeprops)
-    plt.legend(loc=(-0.5,0.2))
-    plt.title('인구 천명당 범죄 신고 건수 비율', size=14)
+    with st.expander('chart') :
 
-    st.pyplot(fig1)
+        fig1 = plt.figure() 
+        plt.pie(ratio, labels=labels, labeldistance=1.2, autopct='%.0f%%', startangle=90, 
+                counterclock=False, colors=colors, wedgeprops=wedgeprops)
+        plt.legend(loc=(-0.5,0.2))
+        plt.title('인구 천명당 범죄 신고 건수 비율', size=14)
 
-    if st.checkbox('구 별 인구수와 5대 범죄 신고 건수 데이터 표 보기') :
-        st.dataframe(group_crime_pop)
-    else :
-        st.text('데이터 숨김')
+        st.pyplot(fig1)
+
+        if st.checkbox('구 별 인구수와 5대 범죄 신고 건수 데이터 표 보기') :
+            st.dataframe(group_crime_pop)
+        else :
+            st.text('데이터 숨김')
 
 
 
