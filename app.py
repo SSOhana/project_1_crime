@@ -11,18 +11,10 @@ def main() :
 
 
 
-
-
-
-
     if choice == menu[0] :
         run_home()
     elif choice == menu[1] :
         run_eda()
-
-
-
-
 
 
 

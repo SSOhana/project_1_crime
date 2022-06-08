@@ -1,11 +1,10 @@
 from soupsieve import select
 
-import streamlit as st               # 스트림릿 라이브러리
+import streamlit as st
 import pandas as pd
 import numpy as np
 
 import matplotlib
-# matplotlib.use('TKAgg')
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
@@ -20,22 +19,6 @@ plt.rcParams['axes.unicode_minus'] = False
 if platform.system() == 'Linux':
     rc('font', family='NanumGothic')
     
-# import platform
-
-# from matplotlib import font_manager, rc
-# plt.rcParams['axes.unicode_minus'] = False
-
-# if platform.system() == 'Linux':
-#     rc('font', family='AppleGothic')
-# elif platform.system() == 'Windows':
-#     path = "c:/Windows/Fonts/malgun.ttf"
-#     font_name = font_manager.FontProperties(fname=path).get_name()
-#     rc('font', family=font_name)
-# else:
-#     print('Unknown system... sorry~~~~')
-
-
-
 
 def run_eda() :
     st.title('인천광역시 범죄 신고 건수 데이터')
@@ -48,12 +31,9 @@ def run_eda() :
          st.dataframe(df_crime_pop)
 
 
-    # 차트1 : 인구 천명당 범죄 신고 비율
+    # 차트 : 인구 천명당 범죄 신고 비율
     st.subheader('인구 대비 범죄 신고 건수')
     st.info('인구수 대비 범죄 신고 건수로 작성된 차트입니다.')
-
-    # img2 = Image.open('data/chart.png')
-    # st.image(img2)
 
     group_crime_pop = pd.read_csv('data/group_crime_pop.csv')
 
@@ -103,21 +83,3 @@ def run_eda() :
         fig2 = sns.pairplot(data=df_crime_pop, vars=df_crime_pop[multi1])
 
         st.pyplot(fig2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # if st.button('차트 확인') :
-    #   st.dataframe(df_crime_pop)  # 이 부분 히스토그램으로 바꿔줘야..!!
-
-
-

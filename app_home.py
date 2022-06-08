@@ -20,7 +20,7 @@ def run_home() :
     st.info('우리 동네 경찰서 위치를 확인해보세요.')
 
     
-    #지도
+    # 지도
     police_loc = pd.read_csv('data/police_loc.csv')
     pd.options.display.float_format = '{: .14f}'.format
 
@@ -42,7 +42,7 @@ def run_home() :
     st_data = st_folium(m, width=800)
 
 
-
+    # 신고요령 동영상
     st.subheader('위급상황을 위해 반드시 기억해야할 112 신고요령')
     st.info('신고 요령을 터득하여 보다 신속하게 도움을 받아보세요.')
     video_file = open('data/emergency_112.mp4', 'rb')
@@ -52,32 +52,3 @@ def run_home() :
 
 
 
-
-    # geo_local = Nominatim(user_agent='South Korea')
-
-    #     # 위도, 경도 반환하는 함수
-    # def geocoding(address):
-    #     geo = geo_local.geocode(address)
-    #     x_y = [geo.latitude, geo.longitude]
-    #     return x_y
-        
-
-
-
-    # incheon_address = ['대한민국 인천광역시 중구 항동2가 2-7', '대한민국 인천광역시 남구 매소홀로290번길 32',
-    # '대한민국 인천광역시 남동구 구월1동 1447-2', '대한민국 인천광역시 부평구 길주로 511',
-    # '대한민국 인천광역시 서구 심곡동 281-2', '대한민국 인천광역시 계양구 계산새로',
-    # '대한민국 인천광역시 강화군 강화읍 관청리 437', '대한민국 인천광역시 연수구 연수2동 원인재로 138',
-    # '대한민국 인천광역시 부평구 삼산동 441-1', '대한민국 인천광역시 남동구 논현2동 363-4',
-    # '대한민국 인천광역시 남구 매소홀로290번길 32']
-    
-
-    # for i in incheon_address :
-    #     lat_01 = geocoding(i)[0]
-    #     lng_01 = geocoding(i)[1]
-    #     # st.text('첫번째 장소의 위도 : {}, 경도 : {}'.format(lat_01,lng_01))
-            
-    #     map_data = pd.DataFrame({'latitude':[lat_01],'longitude':[lng_01]})
-        
-    # st.map(data= map_data, zoom = 9)
-    
