@@ -15,18 +15,24 @@ from PIL import Image
 
 # 한글 깨짐 현상시 사용하는 코드
 import platform
-
 from matplotlib import font_manager, rc
 plt.rcParams['axes.unicode_minus'] = False
-
 if platform.system() == 'Linux':
-    rc('font', family='AppleGothic')
-elif platform.system() == 'Windows':
-    path = "c:/Windows/Fonts/malgun.ttf"
-    font_name = font_manager.FontProperties(fname=path).get_name()
-    rc('font', family=font_name)
-else:
-    print('Unknown system... sorry~~~~')
+    rc('font', family='NanumGothic')
+    
+# import platform
+
+# from matplotlib import font_manager, rc
+# plt.rcParams['axes.unicode_minus'] = False
+
+# if platform.system() == 'Linux':
+#     rc('font', family='AppleGothic')
+# elif platform.system() == 'Windows':
+#     path = "c:/Windows/Fonts/malgun.ttf"
+#     font_name = font_manager.FontProperties(fname=path).get_name()
+#     rc('font', family=font_name)
+# else:
+#     print('Unknown system... sorry~~~~')
 
 
 
