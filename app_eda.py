@@ -52,8 +52,8 @@ def run_eda() :
     st.subheader('인구 대비 범죄 신고 건수')
     st.info('인구수 대비 범죄 신고 건수로 작성된 차트입니다.')
 
-    img2 = Image.open('data/chart.png')
-    st.image(img2)
+    # img2 = Image.open('data/chart.png')
+    # st.image(img2)
 
     group_crime_pop = pd.read_csv('data/group_crime_pop.csv')
 
@@ -73,20 +73,20 @@ def run_eda() :
     colors = ['#9579D1', '#BE9DDF', '#FFA5D8', '#92DDEA', '#7EB8DA','#FFCBCB', '#7BCABF', '#FF9797']
     wedgeprops={'width': 0.8, 'edgecolor': 'w', 'linewidth': 3}
 
-    with st.expander('chart') :
+    # with st.expander('chart') :
 
-        fig1 = plt.figure() 
-        plt.pie(ratio, labels=labels, labeldistance=1.2, autopct='%.0f%%', startangle=90, 
-                counterclock=False, colors=colors, wedgeprops=wedgeprops)
-        plt.legend(loc=(-0.5,0.2))
-        plt.title('인구 천명당 범죄 신고 건수 비율', size=14)
+    fig1 = plt.figure() 
+    plt.pie(ratio, labels=labels, labeldistance=1.2, autopct='%.0f%%', startangle=90, 
+            counterclock=False, colors=colors, wedgeprops=wedgeprops)
+    plt.legend(loc=(-0.5,0.2))
+    plt.title('인구 천명당 범죄 신고 건수 비율', size=14)
 
-        st.pyplot(fig1)
+    st.pyplot(fig1)
 
-        if st.checkbox('구 별 인구수와 5대 범죄 신고 건수 데이터 표 보기') :
-            st.dataframe(group_crime_pop)
-        else :
-            st.text('데이터 숨김')
+    if st.checkbox('구 별 인구수와 5대 범죄 신고 건수 데이터 표 보기') :
+        st.dataframe(group_crime_pop)
+    else :
+        st.text('데이터 숨김')
 
 
 
