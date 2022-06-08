@@ -17,7 +17,6 @@ from PIL import Image
 import platform
 
 from matplotlib import font_manager, rc
-plt.rc('font', family='AppleGothic')
 plt.rcParams['axes.unicode_minus'] = False
 
 if platform.system() == 'Darwin':
@@ -27,6 +26,7 @@ elif platform.system() == 'Windows':
     font_name = font_manager.FontProperties(fname=path).get_name()
     rc('font', family=font_name)
 else:
+    matplotlib.rc('font', family='NanumGothic')
     print('Unknown system... sorry~~~~')
 
 
