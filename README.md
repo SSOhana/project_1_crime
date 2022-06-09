@@ -16,8 +16,30 @@ http://13.125.247.25:8502/
 <img src="https://user-images.githubusercontent.com/105832465/172528297-2851841c-3afc-470c-8242-25829d89fc33.JPG" width="650"/>
 
 * 112 신고 요령 동영상
- * 112 신고 요령 동영상을 통해 신속하게 도움 받을 수 있도록 도와주는 영상입니다.
-<img src=https://user-images.githubusercontent.com/105832465/172530701-7bd49466-ea5d-4cb8-80d6-ee1307f3cddb.JPG" width="650"/>
+  * 112 신고 요령 동영상을 통해 신속하게 도움 받을 수 있도록 도와주는 영상입니다.
+ 
+<img src="https://user-images.githubusercontent.com/105832465/172530701-7bd49466-ea5d-4cb8-80d6-ee1307f3cddb.JPG" width="650"/>
+
+
+### 4. EDA 소개
+* 인천광역시 5대 범죄 신고 건수와 인구수 데이터
+  * 관할서 별로 '강간', '강도', '살인', '절도', '폭력', '행정구', '인구수'를 알 수 있게 정리해놓았습니다.
+    * 각 범죄 건수는 2015년부터 2019년까지의 **평균 건수** 입니다.
+    * 인구수는 2019년도 인천광역시의 인구수입니다.
+    * 중구, 동구, 옹진은 중부서에 포함되어있습니다.
+
+<img src="https://user-images.githubusercontent.com/105832465/172737783-21473f78-54ff-4b43-934d-fccf89b04be7.JPG" width="650"/>
+
+
+* 인구 천명당 범죄 신고 건수 비율
+  * 각 구의 인구수가 다르기때문에 범죄 신고 건수의 비율을 비교하기 쉽게 인구 천명당으로 계산했습니다. (범죄율 / 인구수 * 1000)
+
+<img src="https://user-images.githubusercontent.com/105832465/172737873-12fa13b1-a155-4bbd-9ef4-8fadd909da9e.JPG" width="650"/>
+
+* 각 범죄 별과 인구수의 상관관계
+  * 연관성을 확인하고 싶은 **항목을 선택** 하면 각각의 '강간', '강도', '살인', '절도', '폭력', '인구수' 중 선택한 항목끼리의 **상관관계를 확인**할 수 있습니다.
+
+<img src="https://user-images.githubusercontent.com/105832465/172737974-3e65ebd5-0311-4666-9f78-c18f626fb78d.JPG" width="650"/>
 
 
 
